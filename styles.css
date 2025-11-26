@@ -318,6 +318,13 @@ ul {
     margin-bottom: 6px;
 }
 
+.timeline-img {
+    width: 100%;
+    border-radius: 8px;
+    margin: 10px 0;
+    box-shadow: var(--shadow-soft);
+}
+
 /* Location */
 .location-card {
     background: linear-gradient(135deg, #fffdf8, #f6efe2);
