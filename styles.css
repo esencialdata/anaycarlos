@@ -369,6 +369,14 @@ ul {
     box-shadow: var(--shadow-soft);
 }
 
+.dress-icon-img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+    /* Optional: filter to match theme color if SVGs are black */
+    /* filter: invert(53%) sepia(13%) saturate(928%) hue-rotate(49deg) brightness(96%) contrast(89%); */
+}
+
 .dress-icon {
     width: 56px;
     height: 56px;
