@@ -430,6 +430,11 @@ video.gallery-img {
     /* Prevent element from being cut in columns */
 }
 
+video.gallery-img {
+    column-span: all;
+    /* Video takes full width at the top */
+}
+
 .gallery-img:hover,
 video.gallery-img:hover {
     transform: translateY(-5px);
