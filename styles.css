@@ -696,13 +696,13 @@ video.gallery-img:hover {
     }
 
     .font-garamond {
-        font-size: 1.45rem;
-        /* Aumentado 20% */
+        font-size: 1.3rem;
+        /* Reducido 10% */
     }
 
     .font-script {
-        font-size: 4.2rem;
-        /* Aumentado 20% */
+        font-size: 3.8rem;
+        /* Reducido 10% */
     }
 }
 
