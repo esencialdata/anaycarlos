@@ -1,13 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Countdown
-    const weddingDate = new Date('May 16, 2026 00:00:00').getTime();
+    // Fecha objetivo: 16 de mayo de 2026 a las 3:00 PM
+    const weddingDate = new Date('May 16, 2026 15:00:00').getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
         const distance = weddingDate - now;
 
         if (distance < 0) {
-            document.getElementById('countdown').innerHTML = "¡Es hoy!";
+            document.getElementById('countdown').innerHTML = "<div class='time-block'><span class='time-number'>¡Hoy es el gran día!</span></div>";
             return;
         }
 
@@ -193,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.fade-in').forEach(el => {
+    document.querySelectorAll('.fade-in, .animate-on-scroll').forEach(el => {
         observer.observe(el);
     });
 
