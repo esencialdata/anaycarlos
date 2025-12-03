@@ -701,8 +701,8 @@ video.gallery-img:hover {
     }
 
     .font-script {
-        font-size: 3.4rem;
-        /* Reducido adicionalmente */
+        font-size: 2.5rem;
+        /* Reducido drásticamente a petición del usuario */
     }
 }
 
