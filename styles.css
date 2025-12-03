@@ -72,7 +72,6 @@ body {
 }
 
 html {
-    overflow-x: hidden;
     width: 100%;
 }
 
@@ -585,6 +584,10 @@ video.gallery-img:hover {
     padding: var(--spacing-md);
     border: none;
     background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .insta-icon {
@@ -599,8 +602,8 @@ video.gallery-img:hover {
     margin-bottom: 10px;
     letter-spacing: 0.05em;
     text-align: center;
-    /* Ensure centering */
     width: 100%;
+    display: block;
 }
 
 .insta-text {
