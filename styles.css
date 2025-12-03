@@ -609,16 +609,7 @@ video.gallery-img:hover {
     color: var(--color-text);
 }
 
-.footer {
-    text-align: center;
-    padding: var(--spacing-md) 0;
-    border-top: 1px solid rgba(165, 100, 60, 0.2);
-    color: var(--color-text-light);
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    background: rgba(255, 255, 255, 0.6);
-}
+
 
 /* Animations */
 @keyframes float {
