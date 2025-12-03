@@ -719,11 +719,11 @@ video.gallery-img:hover {
 
     .invitation-text {
         padding-top: 2rem;
-        padding-top: 2rem;
-        flex-direction: row;
-        /* Intentar mantener en línea */
-        flex-wrap: wrap;
-        gap: 0.5rem;
+        flex-direction: column;
+        /* Apilar verticalmente en móvil */
+        flex-wrap: nowrap;
+        gap: 0;
+        /* Reducir gap para que queden juntos */
     }
 
     .font-garamond {
@@ -936,7 +936,8 @@ video.gallery-img:hover {
     }
 
     .union-name {
-        font-size: 8rem;
+        font-size: 5rem;
+        /* Reducido para evitar desbordamiento */
     }
 }
 
@@ -1053,7 +1054,9 @@ video.gallery-img:hover {
 @media (max-width: 768px) {
     .details-container {
         flex-direction: column;
-        gap: 2rem;
+        gap: 1.5rem;
+        width: 100%;
+        padding: 0 1rem;
     }
 
     .detail-separator {
