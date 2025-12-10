@@ -222,6 +222,32 @@
             </div>
             <h2 class="section-title">Hacienda La Bartola</h2>
 
+            <!-- Bloque de Horarios (Inicio) -->
+            <!-- Bloque de Horarios (Inicio) -->
+            <div class="location-schedule">
+                <div class="schedule-item">
+                    <h3 class="schedule-title">Recepción</h3>
+                    <p class="schedule-time">05:45 PM</p>
+                </div>
+
+                <div class="schedule-item">
+                    <h3 class="schedule-title">Ceremonia</h3>
+                    <p class="schedule-time">06:00 PM</p>
+                </div>
+
+                <div class="schedule-item">
+                    <h3 class="schedule-title">Cóctel de bienvenida</h3>
+                    <p class="schedule-time">07:00 PM</p>
+                </div>
+
+                <div class="schedule-item">
+                    <h3 class="schedule-title">Entrada al salón</h3>
+                    <p class="schedule-time">07:40 PM</p>
+                </div>
+            </div>
+            <!-- Bloque de Horarios (Fin) -->
+            <!-- Bloque de Horarios (Fin) -->
+
             <div class="venue-image fade-in" style="margin: 20px 0;">
                 <img src="assets/images/LAHACIENDA_FOTOS-03.png" alt="Hacienda La Bartola"
                     style="width: 100%; border-radius: 12px; box-shadow: var(--shadow-soft);">
@@ -253,16 +279,7 @@
 
 
 
-    <!-- Masked Video (Moved from Thanks) -->
-    <section class="section container">
-        <div class="text-center fade-in" style="margin-bottom: var(--spacing-md);">
-            <p class="details-info-label" style="margin-bottom: 0;">NUESTRA HISTORIA EN</p>
-            <h2 class="details-info-script" style="margin-top: 0; margin-bottom: 1rem;">Momentos</h2>
-        </div>
-        <div class="thanks-photo-wrapper" style="margin: 0 auto;">
-            <video src="assets/images/wedding_video.mp4" class="thanks-photo" controls playsinline></video>
-        </div>
-    </section>
+
 
     <!-- Gallery -->
     <section class="section container section-card" id="galeria">
@@ -274,15 +291,33 @@
             </p>
 
             <!-- Camera Button -->
+            <!-- Camera & Gallery Buttons -->
             <div class="camera-upload-container">
-                <label for="camera-input" class="btn btn-camera">
-                    <span style="font-size: 1.2rem; margin-right: 8px;">📷</span> Abrir Cámara
-                </label>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+                    <label for="camera-input" class="btn btn-camera">
+                        <span style="font-size: 1.2rem; margin-right: 8px;">📷</span> Tomar Foto
+                    </label>
+                    <label for="gallery-input" class="btn btn-outline"
+                        style="border-style: dashed; border-color: var(--color-primary); color: var(--color-primary);">
+                        <span style="font-size: 1.2rem; margin-right: 8px;">🖼️</span> Subir Galería
+                    </label>
+                </div>
+
+                <!-- Input for Camera (Force Camera) -->
                 <input type="file" id="camera-input" accept="image/*" capture="environment"
                     style="position: absolute; opacity: 0; width: 1px; height: 1px; overflow: hidden; z-index: -1;">
+
+                <!-- Input for Gallery (Standard File Picker) -->
+                <input type="file" id="gallery-input" accept="image/*"
+                    style="position: absolute; opacity: 0; width: 1px; height: 1px; overflow: hidden; z-index: -1;">
+
                 <p id="upload-status"
                     style="margin-top: 10px; font-size: 0.9rem; color: var(--color-sage); min-height: 20px;"></p>
             </div>
+
+            <!-- Anchor for QR linking -->
+            <div id="subir-fotos" style="position: relative; top: -100px; visibility: hidden;"></div>
+
         </div>
 
         <!-- Live Gallery Grid (Firebase Only) -->
@@ -299,21 +334,47 @@
     </section>
 
 
-    <!-- Music -->
-    <section class="section container section-card">
-        <div class="music-box fade-in">
-            <p class="details-info-label" style="margin-bottom: 0;">¡ESTA CANCIÓN LA BAILO SÍ O SÍ!</p>
-            <h2 class="details-info-script" style="margin-top: 0; margin-bottom: 1rem;">Música</h2>
-            <form id="music-form" style="display: flex; gap: 10px;">
-                <input type="text" id="song-input" class="input-line" placeholder="Canción / Artista" required>
-                <button type="submit" class="btn" style="padding: 10px 20px;">Enviar</button>
-            </form>
+
+
+
+
+    <!-- Honeymoon / Registry Section -->
+    <section class="honeymoon-section">
+        <!-- Floral Decoration (Left) -->
+        <div class="honeymoon-floral-wrapper">
+            <img src="assets/images/ornament_1_left.png" alt="Decoración floral" class="honeymoon-floral">
+        </div>
+
+        <div class="honeymoon-container fade-in">
+            <p class="honeymoon-intro">
+                O si deseas agregar kilómetros<br>
+                y experiencias a nuestra
+            </p>
+
+            <h2 class="honeymoon-title">Luna de miel</h2>
+
+            <p class="honeymoon-subtitle">
+                Puedes hacerlo a la siguiente cuenta:
+            </p>
+
+            <div class="bank-details">
+                <!-- Bank Logo (Placeholder) -->
+                <img src="assets/images/hsbc-logo.png" alt="HSBC" class="bank-logo">
+
+                <p class="bank-holder">OSCAR JAVIER MEZA ORTIZ</p>
+
+                <div class="bank-info-group">
+                    <p class="bank-label">NUM. TARJETA</p>
+                    <p class="bank-value">4830 3045 0613 8712</p>
+                </div>
+
+                <div class="bank-info-group">
+                    <p class="bank-label">CLABE INTERBANCARIA</p>
+                    <p class="bank-value">021691064727078053</p>
+                </div>
+            </div>
         </div>
     </section>
-
-
-
-    <!-- RSVP -->
 
 
 

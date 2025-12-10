@@ -64,61 +64,70 @@ document.addEventListener('DOMContentLoaded', () => {
     // ------------------------------------------------------------------
     // LOGICA DE CÁMARA / SUBIDA
     // ------------------------------------------------------------------
-    const cameraInput = document.getElementById('camera-input');
     const uploadStatus = document.getElementById('upload-status');
     const liveGallery = document.getElementById('live-gallery');
 
+    // Reusable function for handling file uploads
+    const handleFileUpload = async (file) => {
+        if (!file) return;
+
+        uploadStatus.innerText = "Comprimiendo y subiendo...";
+
+        // 1. MODO DEMO (Sin Firebase configurado)
+        if (!storage) {
+            setTimeout(() => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'gallery-img fade-in visible';
+                    liveGallery.insertBefore(img, liveGallery.firstChild);
+                    uploadStatus.innerText = "¡Foto subida! (Modo Demo)";
+                    setTimeout(() => uploadStatus.innerText = "", 3000);
+                };
+                reader.readAsDataURL(file);
+            }, 1500);
+            return;
+        }
+
+        // 2. MODO REAL (Con Firebase + Compresión)
+        try {
+            // Comprimir imagen
+            const compressedFile = await compressImage(file);
+
+            // Nombre único
+            const fileName = `guest_photos/${Date.now()}_${file.name}`;
+            const storageRef = storage.ref().child(fileName);
+
+            // Subir archivo comprimido
+            const snapshot = await storageRef.put(compressedFile);
+            const downloadURL = await snapshot.ref.getDownloadURL();
+
+            // Guardar en Firestore
+            await db.collection('photos').add({
+                url: downloadURL,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
+
+            uploadStatus.innerText = "¡Foto compartida con éxito!";
+            setTimeout(() => uploadStatus.innerText = "", 3000);
+
+        } catch (error) {
+            console.error("Error subiendo foto:", error);
+            uploadStatus.innerText = "Error al subir. Intenta de nuevo.";
+        }
+    };
+
+    // Camera Input (Capture)
+    const cameraInput = document.getElementById('camera-input');
     if (cameraInput) {
-        cameraInput.addEventListener('change', async (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
+        cameraInput.addEventListener('change', (e) => handleFileUpload(e.target.files[0]));
+    }
 
-            uploadStatus.innerText = "Comprimiendo y subiendo...";
-
-            // 1. MODO DEMO (Sin Firebase configurado)
-            if (!storage) {
-                setTimeout(() => {
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.className = 'gallery-img fade-in visible';
-                        liveGallery.insertBefore(img, liveGallery.firstChild);
-                        uploadStatus.innerText = "¡Foto subida! (Modo Demo)";
-                        setTimeout(() => uploadStatus.innerText = "", 3000);
-                    };
-                    reader.readAsDataURL(file);
-                }, 1500);
-                return;
-            }
-
-            // 2. MODO REAL (Con Firebase + Compresión)
-            try {
-                // Comprimir imagen
-                const compressedFile = await compressImage(file);
-
-                // Nombre único
-                const fileName = `guest_photos/${Date.now()}_${file.name}`;
-                const storageRef = storage.ref().child(fileName);
-
-                // Subir archivo comprimido
-                const snapshot = await storageRef.put(compressedFile);
-                const downloadURL = await snapshot.ref.getDownloadURL();
-
-                // Guardar en Firestore
-                await db.collection('photos').add({
-                    url: downloadURL,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                });
-
-                uploadStatus.innerText = "¡Foto compartida con éxito!";
-                setTimeout(() => uploadStatus.innerText = "", 3000);
-
-            } catch (error) {
-                console.error("Error subiendo foto:", error);
-                uploadStatus.innerText = "Error al subir. Intenta de nuevo.";
-            }
-        });
+    // Gallery Input (Upload)
+    const galleryInput = document.getElementById('gallery-input');
+    if (galleryInput) {
+        galleryInput.addEventListener('change', (e) => handleFileUpload(e.target.files[0]));
     }
 
     // Helper: Compresión de Imagen
