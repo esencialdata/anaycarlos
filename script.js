@@ -118,13 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Camera Input (Capture)
-    const cameraInput = document.getElementById('camera-input');
-    if (cameraInput) {
-        cameraInput.addEventListener('change', (e) => handleFileUpload(e.target.files[0]));
-    }
-
-    // Gallery Input (Upload)
     const galleryInput = document.getElementById('gallery-input');
     if (galleryInput) {
         galleryInput.addEventListener('change', (e) => handleFileUpload(e.target.files[0]));
