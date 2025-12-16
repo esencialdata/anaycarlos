@@ -579,6 +579,65 @@ video.gallery-img:hover {
 
 
 
+/* Trio Gallery Editorial Layout */
+.trio-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    width: 90%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-items: center;
+}
+
+@media (min-width: 768px) {
+    .trio-gallery {
+        grid-template-columns: 1fr;
+        /* Stack vertically even on desktop to preserve A-B-C strict sequence with max width */
+        gap: 2rem;
+    }
+
+    /* All items span full width of the container */
+    .trio-gallery .trio-item {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+}
+
+.trio-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.trio-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    display: block;
+    aspect-ratio: auto;
+    /* Let natural aspect ratio work or use 16/9 for uniformity. Auto is safer for mixed sizes 'less small' */
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Ensure B (middle) is prominent if needed, but in stack they are equal.
+   User said "Centra la B", in a stack of 3, B is in the center VERTICALLY. */
+.trio-item:nth-child(2) img {
+    /* Optional: Add specific style for B if needed, e.g. slightly different shadow or border */
+}
+
+/* User said "hazla tan ancho como las imagenes con la mascara".
+   If redmasked-wrapper has width: 90% (inferred), we use that.
+*/
+
+.trio-item img:hover {
+    transform: scale(1.02);
+}
+
 /* RSVP */
 .rsvp-form {
     max-width: 780px;
@@ -1659,6 +1718,7 @@ video.gallery-img:hover {
         font-size: 2.2rem;
     }
 }
+
 /* Honeymoon / Registry Section */
 .honeymoon-section {
     position: relative;
@@ -1727,7 +1787,8 @@ video.gallery-img:hover {
     flex-direction: column;
     align-items: center;
     gap: 1.8rem;
-    background: rgba(255, 255, 255, 0.5); /* Slight backdrop if decoration overlaps */
+    background: rgba(255, 255, 255, 0.5);
+    /* Slight backdrop if decoration overlaps */
     border-radius: 16px;
     padding: 1rem;
 }
@@ -1765,7 +1826,8 @@ video.gallery-img:hover {
 }
 
 .bank-value {
-    font-family: var(--font-heading); /* Keeping coherent with serif request */
+    font-family: var(--font-heading);
+    /* Keeping coherent with serif request */
     font-size: 1.4rem;
     letter-spacing: 0.08em;
     color: #8C4A35;
